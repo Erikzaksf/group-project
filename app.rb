@@ -9,7 +9,7 @@ require("pg")
 require("pry")
 
 get('/')do
-  erb(:'users/home')
+  erb(:'users/index')
 end
 
 get('/sessions/login')do
@@ -21,8 +21,19 @@ get('/registrations/signup')do
 end
 
 post('/registrations/signup')do
-binding.pry
+  @user = User.new(first_name: params["first_name"], last_name: params["last_name"], email: params["email"], password: params["password"])
+  @user.save
+  session[:id] = @user.id
+  redirect '/users/home'
+end
+
+get '/users/home' do
   erb(:'users/user_profile')
+end
+
+get('/sessions/logout')do
+    session.clear
+  erb(:'users/home')
 end
 
 get('')do
