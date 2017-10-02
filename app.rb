@@ -8,18 +8,21 @@ require("./lib/login")
 require("pg")
 require("pry")
 
-
-
-get '/' do
-  erb(:index)
+get('/')do
+  erb(:'users/home')
 end
 
-get('/signup')do
-  erb(:signup)
+get('/sessions/login')do
+  erb(:'sessions/login')
 end
 
-get('/sessoins/login')do
-  erb(:login)
+get('/registrations/signup')do
+  erb(:'registrations/signup')
+end
+
+post('/registrations/signup')do
+binding.pry
+  erb(:'users/user_profile')
 end
 
 get('')do
