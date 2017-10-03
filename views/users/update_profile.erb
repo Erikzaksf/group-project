@@ -6,21 +6,21 @@
 <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
   <div class="alert alert-success hide"></div>
-  <form id="regiration_form" novalidate>
+  <form id="regiration_form" method="post" action="/profile" novalidate>
   <fieldset>
   	<h2> Step 1: Add Personnel Details</h2>
     <div class="form-group">
 	    <label for="name">Name</label>
-	    <input type="text" class="form-control"  name="name" placeholder="name">
+	    <input type="text"  name="name">
     </div>
 
     <div class="form-group">
     	<label for="birthday">Birthday</label>
-     	<input type="date" class="datepicker">
+     	<input type="date" name="birthday" class="datepicker">
     </div>
 
     <div class="form-group">
-	  <select class="browser-default">
+	  <select class="browser-default" name="gender">
 	    <option value="" disabled selected>Choose your gender</option>
 	    <option value="male">Male</option>
 	    <option value="female">Female</option>
@@ -30,34 +30,35 @@
 	  </div>
     <div class="form-group">
     	<label for="zipcode">Zip</label>
-    	<input type="text" class="form-control" name="zip" id="zip" placeholder="98123">
+    	<input type="text" name="zip" id="zip">
     </div>
 
-    <input type="button" name="password" class="next btn btn-info" value="Next" />
+    <input type="button" class="next btn btn-info" value="Next" />
+  </fieldset>
   </fieldset>
   <fieldset>
   	<h2> Step 2: Add study preferences</h2>
     
     <div class="form-group">
 	    <label for="subject">Subject</label>
-	    <input type="text" class="form-control"  name="subject" placeholder="math">
+	    <input type="text"  name="subject" placeholder="math">
     </div>
 
     <div class="form-group">
-	  <select class="browser-default">
+	  <select class="browser-default" name="level">
 	    <option value="" disabled selected>Level</option>
 	    <option value="1">Beginer</option>
-	    <option value="female">Intermediate</option>
-	    <option value="neutral">Advanced</option>
+	    <option value="2">Intermediate</option>
+	    <option value="3">Advanced</option>
 	  </select>
 	</div>
 
 	<div class="form-group">
-	  <select class="browser-default">
-	    <option value="" disabled selected>Location</option>
-	    <option value="1">Near by</option>
-	    <option value="female">Within Us</option>
-	    <option value="neutral">I dont care</option>
+	  <select class="browser-default" name="location">
+	    <option value="" disabled selected>Location preference</option>
+	    <option value="near">Near by</option>
+	    <option value="US">Within United States</option>
+	    <option value="null">I dont care</option>
 	  </select>
 	</div>
 

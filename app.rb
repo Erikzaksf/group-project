@@ -2,7 +2,7 @@ require("sinatra")
 require("sinatra/reloader")
 require("sinatra/activerecord")
 also_reload("lib/**/*.rb")
-require("./lib/subject")
+require("./lib/preference")
 require("./lib/user")
 require("./lib/user_profile")
 require("pg")
@@ -29,9 +29,20 @@ post('/register')do
   redirect '/users/update_profile'
 end
 
-get '/users/update_profile' do
-  @user = User.find(session[:id])
-  erb(:'users/update_profile')
+get '/users/update_profile' do   
+@user = User.find(session[:id])
+erb(:'users/update_profile') end
+
+post('/profile') do   
+@user = User.find(session[:id])  
+@profile = Profile.create(user_id: @user.id, name: params["name"], birthday: params["birthday"], gender: params["gender"], zip: params["zip"], photo: params["photo"])
+@preference = Preferences.create(user_id: @user.id, subject: params["subject"], level: params["level"], location: params["location"])
+  
+  redirect('/users/user_profile')
+end
+
+get('/users/user_profile') do
+  erb(:'users/user_profile')
 end
 
 get('/sessions/login')do

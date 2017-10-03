@@ -26,14 +26,6 @@ $(document).ready( function() {
     var percent = parseFloat(100 / steps) * curStep;
     percent = percent.toFixed();
     $(".progress-bar")
-      .css("width",percent+"%")
-      .html(percent+"%");   
-  }
-
-  $( "#regiration_form" ).submit(function(event) {
-    jQuery('.alert-success').removeClass('hide').html( "Handler for .submit() called and see console logs for your posted variable" );
-    console.log($(this).serialize());
-    event.preventDefault();
-  });
- 
+      .css("width",percent+"%")  
+  } 
 });
