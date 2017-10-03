@@ -4,6 +4,8 @@ require("sinatra/activerecord")
 require 'rspec'
 require 'pg'
 require 'user'
+require 'subject'
+require 'login'
 
 
 

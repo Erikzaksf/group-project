@@ -6,6 +6,7 @@ require("./lib/subject")
 require("./lib/user")
 require("./lib/login")
 require("pg")
+require("email_validator")
 require("pry")
 
 get('/')do
