@@ -12,7 +12,16 @@
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
   </head>
-
+  <header>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">StudyBuddy</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/">Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
   <!-- <sideNav>
   <ul id="slide-out" class="side-nav fixed">
       <li class="bold"><a href="/" class="waves-effect waves-teal">Home</a></li>
@@ -34,6 +43,7 @@
     </ul>
   <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 </nav> -->
+    <div>
       <%= yield %>
     </div>
   </body>
