@@ -32,6 +32,12 @@ h5
 {
 	position: absolute;
 }
+
 nav {
   background-color: #00695c;
+}
+
+.material-icons
+{
+	font-size: 40px;
 }

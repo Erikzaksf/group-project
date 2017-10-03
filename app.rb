@@ -24,10 +24,10 @@ post('/registrations/signup')do
   @user = User.new(first_name: params["first_name"], last_name: params["last_name"], email: params["email"], password: params["password"])
   @user.save
   session[:id] = @user.id
-  redirect '/users/home'
+  redirect "/users/#{@user.id}/home"
 end
 
-get '/users/home' do
+get '/users/:id/home' do
   erb(:'users/user_profile')
 end
 
