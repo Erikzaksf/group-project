@@ -62,3 +62,7 @@ $(function() {
 
      });
 });
+
+
+
+// validations by: https://jqueryvalidation.org/documentation/

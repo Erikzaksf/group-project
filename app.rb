@@ -29,12 +29,6 @@ post('/registrations/signup')do
     session[:id] = @user.id
     redirect "/users/#{@user.id}/home"
   else
-    if @user.password == params['password_confirm']
-      @password_error = "Your passwords don't match"
-    end
-    if @user.email == params['email_confirm']
-      @email_error = "Your emails don't match"
-    end
     redirect "/registrations/signup"
   end
 end
