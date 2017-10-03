@@ -16,13 +16,18 @@ end
 get('/sessions/login')do
   erb(:'sessions/login')
 end
+post '/sessions' do
+  @user = User.find_by(email: params["email"], password: params["password"])
+  session[:id] = @user.id
+  # binding.pry
+  redirect "/users/#{@user.id}/home"
+end
 
 get('/registrations/signup')do
   erb(:'registrations/signup')
 end
 
 post('/registrations/signup')do
-
   @user = User.new(first_name: params["first_name"], last_name: params["last_name"], email: params["email"], password: params["password"])
   # binding.pry
   if @user.save() && @user.password == params['password_confirm'] && @user.email == params['email_confirm']
@@ -34,6 +39,8 @@ post('/registrations/signup')do
 end
 
 get '/users/:id/home' do
+  @id = params['id'].to_i
+  @user = User.find(@id)
   erb(:'users/user_profile')
 end
 
