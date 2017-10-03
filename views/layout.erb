@@ -7,34 +7,35 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/js/scripts.js"></script>
   </head>
-
-  <!-- <sideNav>
-  <ul id="slide-out" class="side-nav fixed">
-      <li class="bold"><a href="/" class="waves-effect waves-teal">Home</a></li>
-      <li class="bold"><a href="/login" class="">Login</a></li>
-      <li class="no-padding">
-        <ul class="collapsible collapsible-accordion">
-          <li>
-            <a class="collapsible-header waves-effect waves-teal">Info<i class="mdi-navigation-arrow-drop-down"></i></a>
-            <div class="collapsible-body">
-              <ul>
-                <li><a href="#!">About</a></li>
-                <li><a href="#!">Contact</a></li>
-                <li><a href="#!">License</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-</nav> -->
+  <body>
+    <main>
       <%= yield %>
-    </div>
+    </main>
+    <footer class="page-footer green">
+       <div class="row">
+         <div class="col l6 s12">
+           <h5 class="white-text">MeetUp Clone</h5>
+           <a href="/create" id="create">Create a MeetUp</a>
+           <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+         </div>
+         <div class="col l4 offset-l2 s12">
+           <h5 class="white-text">Links</h5>
+           <ul>
+             <li><a class="grey-text text-lighten-3" href="#!">About Us</a></li>
+             <li><a class="grey-text text-lighten-3" href="#!">Find A MeetUp</a></li>
+             <li><a class="grey-text text-lighten-3" href="#!">Careers</a></li>
+             <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
+           </ul>
+         </div>
+       </div>
+     <div class="footer-copyright">
+       © 2017 Epicodus
+     </div>
+    </footer>
   </body>
 </html>

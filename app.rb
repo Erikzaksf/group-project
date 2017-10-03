@@ -36,7 +36,8 @@ get('/sessions/logout')do
   erb(:'users/home')
 end
 
-get('')do
+get('/subjects')do
+  @subject.all
   erb(:subjects)
 end
 
