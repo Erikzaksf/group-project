@@ -22,10 +22,21 @@ get('/registrations/signup')do
 end
 
 post('/registrations/signup')do
+
   @user = User.new(first_name: params["first_name"], last_name: params["last_name"], email: params["email"], password: params["password"])
-  @user.save
-  session[:id] = @user.id
-  redirect "/users/#{@user.id}/home"
+  # binding.pry
+  if @user.save() && @user.password == params['password_confirm'] && @user.email == params['email_confirm']
+    session[:id] = @user.id
+    redirect "/users/#{@user.id}/home"
+  else
+    if @user.password == params['password_confirm']
+      @password_error = "Your passwords don't match"
+    end
+    if @user.email == params['email_confirm']
+      @email_error = "Your emails don't match"
+    end
+    redirect "/registrations/signup"
+  end
 end
 
 get '/users/:id/home' do
