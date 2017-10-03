@@ -9,6 +9,8 @@ require("pg")
 require("email_validator")
 require("pry")
 
+enable :sessions
+
 get('/')do
   erb(:'users/index')
 end
@@ -20,7 +22,7 @@ post '/sessions' do
   @user = User.find_by(email: params["email"], password: params["password"])
   session[:id] = @user.id
   # binding.pry
-  redirect "/users/#{@user.id}/home"
+  redirect "/users/home"
 end
 
 get('/registrations/signup')do
@@ -32,21 +34,27 @@ post('/registrations/signup')do
   # binding.pry
   if @user.save() && @user.password == params['password_confirm'] && @user.email == params['email_confirm']
     session[:id] = @user.id
-    redirect "/users/#{@user.id}/home"
+    # redirect "/users/#{@user.id}/home"
+    redirect "/users/update_profile"
   else
     redirect "/registrations/signup"
   end
 end
 
-get '/users/:id/home' do
-  @id = params['id'].to_i
-  @user = User.find(@id)
+get('/users/update_profile') do
+  binding.pry
+  @user = User.find(session[:id])
+  erb (:'/users/update_profile')
+end
+
+get '/users/home' do
+  @user = User.find(session[:id])
   erb(:'users/user_profile')
 end
 
 get('/sessions/logout')do
     session.clear
-  erb(:'users/home')
+  erb(:'users/index')
 end
 
 get('')do
