@@ -38,3 +38,7 @@ h5
   color: #9c9c9c;
   margin-bottom: 25px;
 }
+
+#regiration_form fieldset:not(:first-of-type) {
+    display: none;
+  }
