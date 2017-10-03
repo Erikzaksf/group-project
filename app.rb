@@ -7,6 +7,7 @@ require("./lib/user")
 require("./lib/user_profile")
 require("pg")
 require("pry")
+require("area")
 
 enable :sessions
 
@@ -35,13 +36,17 @@ erb(:'users/update_profile') end
 
 post('/profile') do   
 @user = User.find(session[:id])  
-@profile = Profile.create(user_id: @user.id, name: params["name"], birthday: params["birthday"], gender: params["gender"], zip: params["zip"], photo: params["photo"])
+@profile = Profile.new(user_id: @user.id, name: params["name"], birthday: params["birthday"], gender: params["gender"], zip: params["zip"], photo: params["photo"])
+@profile.save
 @preference = Preferences.create(user_id: @user.id, subject: params["subject"], level: params["level"], location: params["location"])
   
   redirect('/users/user_profile')
 end
 
 get('/users/user_profile') do
+  @user = User.find(session[:id])
+  @profile = @user.profile
+  binding.pry
   erb(:'users/user_profile')
 end
 
