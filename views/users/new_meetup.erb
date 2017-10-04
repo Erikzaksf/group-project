@@ -1,35 +1,61 @@
-<div class="container" id="meetup">
-	<form method="post" action="/meetup">
-		<fieldset>
-			<h3> Create new meetup</h3>
-				<div class="form-group">
-				    <label for="name">Name</label>
-				    <input type="text"  name="name">
-			    </div>
 
-			    <div class="form-group">
-				  <select class="browser-default" name="category">
+<div class="container white z-depth-2">
+  <div id="register" class="col s12">
+    <form class="col s12" action="/register" method="post">
+      <div class="form-container">
+        <h3 class="teal-text">Create a new meetup </h3>
+        <div class="row">
+          <div class="input-field col s12">
+           	<label for="name">Name</label>
+			<input type="text"  name="name">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+           <select class="browser-default" name="category">
 				    <option value="" disabled selected>Choose category</option>
 				    <option value="tech">Tech</option>
 				    <option value="cooking">Cooking</option>
 				    <option value="outdoor">Outdoor</option>
 				    <option value="gaming">Gaming</option>
-				  </select>
-				</div>
+			</select>
+          </div>
+          <div class="input-field col s6">
+            <label for="zip">Zip</label>
+			<input type="text" name="zip">
+          </div>
+        </div>
 
-				<div class="form-group">
-			    	<label for="address">Address</label>
-			    	<input type="text" name="address">
-			    </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="street">Street address</label>
+			<input type="text" name="street">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <label for="city">City</label>
+			<input type="text" name="city">
+          </div>
+          <div class="input-field col s6">
+            <label for="state">State</label>
+			<input type="text" name="state">
+          </div>
+        </div>
 
-			    <div class="form-group">
-			    	<label for="date">Date</label>
-			     	<input type="date" name="date" class="datepicker">
-			     </div>
-			     <input type="submit" name="submit" class="submit btn btn-success" value="Submit" />
-     </fieldset>
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="description">Description</label>
+      		<textarea class="materialize-textarea" rows="2" name="desc"></textarea>
+          </div>
+        </div>
 
-</form>
-<br>
-    <a style="float: right;" class="btn waves-effect waves-light red" href="/users/dashboard">Cancel</a>
+        <center>
+          <button class="btn waves-effect waves-light teal" type="submit">Submit</button>
+        
+         <a style="float: right;" href="/users/dashboard"><button class="btn waves-effect waves-light red" type="button">Cancel</button></a>
+         </center>
+      </div>
+    </form>
+  </div>
 </div>

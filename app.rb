@@ -26,7 +26,6 @@ end
 post('/register')do
   @user = User.new(user_name: params["user_name"], email: params["email"], password: params["password"])
   @user.save
-  binding.pry
   if(@user.id)
   
   session[:id] = @user.id
