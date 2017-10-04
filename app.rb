@@ -2,12 +2,12 @@ require("sinatra")
 require("sinatra/reloader")
 require("sinatra/activerecord")
 also_reload("lib/**/*.rb")
-require("./lib/subject")
 require("./lib/user")
 require("./lib/login")
+require('./lib/profile')
 require("pg")
 require("email_validator")
-require('./lib/profile')
+
 require("pry")
 
 enable :sessions
