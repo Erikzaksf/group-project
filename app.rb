@@ -7,6 +7,7 @@ require("./lib/user")
 require("./lib/login")
 require("pg")
 require("email_validator")
+require('./lib/profile')
 require("pry")
 
 enable :sessions
@@ -42,14 +43,19 @@ post('/registrations/signup')do
 end
 
 get('/users/update_profile') do
-  binding.pry
+  # binding.pry
   @user = User.find(session[:id])
-  erb (:'/users/update_profile')
+  erb (:'users/update_profile')
 end
 
+post('/profile') do
+  @user = User.find(session[:id])
+  @profile = Profile.create(user_id: @user.id, birthday: params['birthday'], gender: params['gender'], zip: params['zip'], bio: params['bio'], photo: params['fileToUpload'])
+  redirect(:'/users/home')
+end
 get '/users/home' do
   @user = User.find(session[:id])
-  erb(:'users/user_profile')
+  erb(:'/users/index')
 end
 
 get('/sessions/logout')do
@@ -68,25 +74,3 @@ end
 get('')do
   erb(:register)
 end
-
-#####
-
-# get '/registrations/signup' do
-#   erb(:signup)
-# end
-#
-# post '/registrations' do
-#   erb(:)
-# end
-#
-# post '/sessions' do
-#
-# end
-# get '/sessions/logout' do
-#
-# end
-#
-# get '/users/home'
-#
-# shows user's homepage
-# end
