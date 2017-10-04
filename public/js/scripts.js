@@ -4,6 +4,9 @@ $(document).ready( function() {
     selectYears: 15 // Creates a dropdown of 15 years to control year
   });
 
+   $('.carousel').carousel();
+$('.carousel.carousel-slider').carousel({fullWidth: true});
+
    var current = 1,current_step,next_step,steps;
   steps = $("fieldset").length;
   $(".next").click(function(){
@@ -28,4 +31,5 @@ $(document).ready( function() {
     $(".progress-bar")
       .css("width",percent+"%")  
   } 
+
 });

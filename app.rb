@@ -25,9 +25,14 @@ end
 
 post('/register')do
   @user = User.new(user_name: params["user_name"], email: params["email"], password: params["password"])
+  if(@user.id)
   @user.save
   session[:id] = @user.id
   redirect '/users/update_profile'
+else 
+    @message = "user already exists"
+    redirect back
+  end
 end
 
 get '/users/update_profile' do   
@@ -36,19 +41,17 @@ erb(:'users/update_profile') end
 
 post('/profile') do   
 @user = User.find(session[:id])  
-@profile = Profile.new(user_id: @user.id, name: params["name"], birthday: params["birthday"], gender: params["gender"], zip: params["zip"], photo: params["photo"])
+@profile = Profile.new(user_id: @user.id, name: params["name"], birthday: params["birthday"], gender: params["gender"], zip: params["zip"], photo: params["fileToUpload"], bio: params["bio"])
 @profile.save
-@preference = Preferences.create(user_id: @user.id, subject: params["subject"], level: params["level"], location: params["location"])
-  
-  redirect('/users/user_profile')
+redirect '/users/user_profile'
 end
 
 get('/users/user_profile') do
   @user = User.find(session[:id])
   @profile = @user.profile
-  binding.pry
   erb(:'users/user_profile')
 end
+
 
 get('/sessions/login')do
    erb(:'sessions/login') 
@@ -56,13 +59,22 @@ get('/sessions/login')do
 
 post('/login') do
 	@user = User.find_by(user_name: params["user_name"], password: params["password"])
-	session[:id] = @user.id
-	redirect '/users/dashboard'
+  if(@user)
+	session[:id] = @user.id 
+	redirect '/users/user_profile'
+  else
+    @message = "Wrong id or password"
+    erb :error
+  end
 end
 
 get('/users/dashboard') do
 @user = User.find(session[:id])
 	erb(:'users/dashboard')
+end
+
+get('/new_meetup') do
+  erb :'users/new_meetup'
 end
 
 get('/logout') do
