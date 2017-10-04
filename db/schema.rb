@@ -10,39 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002230823) do
+ActiveRecord::Schema.define(version: 20171004170315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "sub_catagories", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
+  create_table "dates", force: :cascade do |t|
+    t.date "date"
+    t.integer "meetup_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "subjects", force: :cascade do |t|
-    t.string "title"
+  create_table "meetups", force: :cascade do |t|
+    t.string "name"
     t.string "description"
+    t.string "catagory"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.integer "zip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "subjects_users", force: :cascade do |t|
-    t.integer "subject_id"
+  create_table "profiles", force: :cascade do |t|
     t.integer "user_id"
+    t.string "name"
+    t.date "birthday"
+    t.string "gender"
+    t.integer "zip"
+    t.string "photo"
+    t.string "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.string "email"
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
   end
 
 end
