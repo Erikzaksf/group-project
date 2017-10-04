@@ -58,6 +58,14 @@ main {
 width: auto;
 }
 
+#tech {
+	height: 225px;
+}
+
+.cooking{
+	height: 225px;
+}
+
 .card{
-	
+	height: 300px;
 }

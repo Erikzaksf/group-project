@@ -2,6 +2,7 @@
 body
 {
 	background: ##00b0ff;
+	text-align: center;
 }
 
 h5
@@ -45,4 +46,19 @@ nav {
 .material-icons
 {
 	font-size: 40px;
+}
+
+#tech, #cooking, #gaming, #outdoors {
+	height: 225px;
+}
+
+
+
+
+.cooking{
+	height: 225px;
+}
+
+.card{
+	height: 300px;
 }
