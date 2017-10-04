@@ -63,7 +63,7 @@ post('/login') do
 	@user = User.find_by(user_name: params["user_name"], password: params["password"])
   if(@user)
 	session[:id] = @user.id 
-	redirect '/users/user_profile'
+	redirect '/users/dashboard'
   else
     @message = "Wrong id or password"
     erb :error
