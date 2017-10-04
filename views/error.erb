@@ -1,6 +1,12 @@
+<div class="container">
 <div class="jumbotron error-container">
   <h2 class="error-title">Oops there were some errors:</h2>
     
-  <%=@message %>
-  <a class="btn waves-effect waves-light green" href="/sessions/login">Try again</a>
+  <p style="color: red;"> <%=@message %></p>
+  <br>
+  <a class="btn waves-effect waves-light red" href="/registrations/signup">SIGN UP</a>
+  <br>
+  <br>
+        <a class="btn waves-effect waves-light green" href="/sessions/login">Log-in</a>
+</div>
 </div>

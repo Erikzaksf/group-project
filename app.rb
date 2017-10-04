@@ -25,13 +25,15 @@ end
 
 post('/register')do
   @user = User.new(user_name: params["user_name"], email: params["email"], password: params["password"])
-  if(@user.id)
   @user.save
+  binding.pry
+  if(@user.id)
+  
   session[:id] = @user.id
   redirect '/users/update_profile'
 else 
     @message = "user already exists"
-    redirect back
+    erb :'error'
   end
 end
 
