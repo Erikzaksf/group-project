@@ -1,0 +1,55 @@
+<nav class=" waves-effect waves-light black">
+    <div class="nav-wrapper">
+      <a class="brand-logo center" href="/users/dashboard"><img class="logo" src="https://cdn-images-1.medium.com/max/1600/1*EK8I8k19h9V04NnyO59C_A.png"></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class="active"><a href="/users/dashboard">Home</a></li>
+          <li><a href="/users/user_profile">Profile</a></li>
+           <li><a href="/users/meetup">All meetups</a></li>
+          <li><a href="/new_meetup">Create a meetup</a></li>
+          <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+ <div class="container">
+<div class="jumbotron cooking">
+  <h1 class="display-3">Food & Drink Meetups</h1>
+  <h3 style="background-color: #ffafaf;" class="lead"><bold><i>Find out what's happening in Food & Drink Meetup groups around the world and start meeting up with the ones near you.</h3>
+</div>
+      <% @meetups.each do |meetup| %>
+      <%if meetup.catagory == "cooking" %>
+		        <div class="row">
+          <div class="col s5 m6">
+            <div class="card teal darken-1">
+              <div class="card-content white-text">
+                <span class="card-title"><%= meetup.name %></span>
+                <p><b style="color: black;">About us:</b> <%= meetup.description %></p><br>
+                <p><b style="color: black;">Date:</b><%= meetup.date %></p>
+                <p><b style="color: black;">Venue:</b><%= meetup.street %>, Seattle, WA, <%= meetup.zip %></p>
+              </div>
+              <div class="card-action">
+                <a style="float: right;" href="#"><span class="glyphicon glyphicon-tag"><%= meetup.catagory %> </span></a>
+                <form action="/join" method="post">
+                  <input type="hidden" name="meetup_id" value="<%= meetup.id%>">
+                  <button class="btn waves-effect waves-light teal" type="submit"><span class="glyphicon glyphicon-plus"> Join</span></button>
+               </form>
+                
+              </div>
+            </div>
+          </div>
+        <div class="col s5 m6">
+		              <% meetup.users.each do |user| %>
+		              <div class="chip">
+		                <img src="http://4vector.com/i/free-vector-persona-avatar-2_098562_persona_Avatar_2.png" alt="Contact Person">
+		                <%= user.user_name %>
+		              </div>
+		            <% end %>
+          </div>
+      </div>
+      <% end %>
+        <% end %>
+
+        
+      
+
+  </div>

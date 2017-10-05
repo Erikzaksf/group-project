@@ -2,7 +2,7 @@ require("sinatra")
 require("sinatra/reloader")
 require("sinatra/activerecord")
 also_reload("lib/**/*.rb")
-require("./lib/preference")
+require("./lib/meetup")
 require("./lib/user")
 require("./lib/user_profile")
 require("pg")
@@ -76,6 +76,48 @@ end
 
 get('/new_meetup') do
   erb :'users/new_meetup'
+end
+
+post('/new_meetup') do
+ @meetup = Meetup.create(name: params['name'],date: params['date'], catagory: params['category'], zip: params['zip'], street: params['street'], city: params['city'], state: params['state'], description: params['desc'])
+  redirect '/users/meetup'
+end
+
+get('/users/meetup') do
+
+@user = User.find(session[:id])
+@meetups = Meetup.all
+  erb(:'users/meet_up')
+  
+end
+
+post('/join') do
+  @user = User.find(session[:id])
+  @meet_up = Meetup.find(params["meetup_id"])
+  if (!@meet_up.users.include? @user)
+      @meet_up.users.push(@user)
+  end
+  redirect back
+  
+end
+
+get('/tech') do
+  @meetups = Meetup.all
+  erb :'categories/tech'
+end
+get('/outdoors') do
+  @meetups = Meetup.all
+  erb :'categories/outdoor'
+end
+
+get('/cooking') do
+  @meetups = Meetup.all
+  erb :'categories/cooking'
+end
+
+get '/gaming' do
+  @meetups = Meetup.all
+  erb :'categories/gaming'
 end
 
 get('/logout') do

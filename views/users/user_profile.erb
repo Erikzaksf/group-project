@@ -4,24 +4,27 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li class="active"><a href="/users/dashboard">Home</a></li>
           <li><a href="/users/user_profile">Profile</a></li>
+           <li><a href="/users/meetup">All meetups</a></li>
           <li><a href="/new_meetup">Create a meetup</a></li>
           <li><a href="/logout">Logout</a></li>
       </ul>
     </div>
   </nav>
 
-
 <div class="container">
+  <div class="row">
 <div class="container-fluid bg-1 text-center">
         <h3 class="margin"><%= @profile.name%></h3>
         <img src="https://static.pexels.com/photos/160699/girl-dandelion-yellow-flowers-160699.jpeg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
         <h3><%= @profile.bio%></h3>
+        </div>
       </div>
 
 
       <div class="row">
-        <div class="col s12">
-          <div class="container-fluid2 bg-2">
+      
+          <div class="container-fluid bg-2">
+              <div class="col s8">
               <button type="button" 
                 class="btn btn-info btn-lg"
           style="margin-left: 10px; color:#FF0000; width: 50%">
@@ -39,6 +42,15 @@
           style="margin-left: 10px; color:#FF0000; width: 50%">
               <span class="glyphicon glyphicon-map-marker"> SEATTLE,<%= @profile.zip %></span></button>
             </div>
+            <div class="col s4" style="float: right;">
+            
+              <%@user.meetups.each do |meetup| %>
+              <div class="chip" style="float: right;">
+                <img src="https://cdn-images-1.medium.com/max/1600/1*EK8I8k19h9V04NnyO59C_A.png" alt="Contact Person">
+                <%= meetup.name %>
+              </div>
+            <% end %>
+            </div>
           </div>
-</div>
-</div>
+        </div>
+      </div>
